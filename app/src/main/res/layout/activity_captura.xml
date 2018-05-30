@@ -18,7 +18,7 @@
 
     <ImageView
         android:id="@+id/foto"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:layout_below="@id/capturar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

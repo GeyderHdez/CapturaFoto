@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,7 +18,7 @@ public class LoginMain extends Activity {
     private Button btnIniciar;
     private Switch recordar;
 
-    SharedPreferences preferences;
+    private SharedPreferences preferences;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -30,6 +31,12 @@ public class LoginMain extends Activity {
         recordar = (Switch)findViewById(R.id.switchRecordar);
 
         preferences = getSharedPreferences("Preferences", Context.MODE_PRIVATE);
+
+        String user = Util.getPrefs(preferences, "user");
+        String pass = Util.getPrefs(preferences, "pass");
+
+        editTextUser.setText(user);
+        editTextPass.setText(pass);
 
         btnIniciar.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,11 +55,9 @@ public class LoginMain extends Activity {
             editor.commit();
             editor.apply();
         }
-
     }
 
     private void gotoMain(){
-
         Intent intent = new Intent(this, Captura.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
         startActivity(intent);

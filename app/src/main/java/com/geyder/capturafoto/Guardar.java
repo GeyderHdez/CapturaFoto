@@ -31,11 +31,11 @@ public class Guardar {
         File file = new File(dir, archivo + CurrentDateAndTime + ".jpg");
         try {
             FileOutputStream fOut = new FileOutputStream(file);
-            ImageToSave.compress(Bitmap.CompressFormat.JPEG, 85, fOut);
+            ImageToSave.compress(Bitmap.CompressFormat.JPEG, 75, fOut);
             fOut.flush();
             fOut.close();
             MakeSureFileWasCreatedThenMakeAvabile(file);
-            AbleToSave();   
+            AbleToSave();
         }
         catch(FileNotFoundException e) {
             UnableToSave();
